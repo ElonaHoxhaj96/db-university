@@ -13,7 +13,7 @@
 3. Selezionare tutti gli studenti che hanno più di 30 anni
     SELECT *
     FROM `students` 
-    WHERE YEAR(`date_of_birth`) = 1994
+    WHERE TIMESTAMPDIFF(YEAR, `date_of_birth`, CURDATE()) >= 30
 
     ***(SOLUZIONE MOLTO LAZY)
 
@@ -31,17 +31,17 @@
 
 
 6. Selezionare tutti i corsi di laurea magistrale (38)
-    SELECT * 
+    SELECT (*) 
     FROM `degrees` 
     WHERE `level` = 'magistrale'
 
 
 7. Da quanti dipartimenti è composta l'università? (12)
-    SELECT COUNT(*)
+    SELECT COUNT(*) AS `num_department` 
     FROM `departments`
     WHERE 1
 
 8. Quanti sono gli insegnanti che non hanno un numero di telefono? (50)
-    SELECT * 
+    SELECT COUNT(*) AS `numero_phone` 
     FROM `teachers` 
-    WHERE `phone`
+    WHERE `phone` IS NULL
